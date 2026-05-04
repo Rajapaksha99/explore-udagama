@@ -1,6 +1,6 @@
 import Contact from "../Components/Contact"
 import Experience from "../Components/Experience"
-import FindUs from "../Components/Findus"
+import Findus from "../Components/Findus"
 import Footer from "../Components/Footer"
 import Gallery from "../Components/Gallery"
 import Hero from "../Components/Hero"
