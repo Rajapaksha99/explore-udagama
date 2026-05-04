@@ -1,0 +1,195 @@
+/* ════════════════════════════════
+   CSS VARIABLES (Global - put in index.css or App.css)
+   Copy these to your :root in index.css
+════════════════════════════════ */
+/*
+:root {
+  --bg-dark:       #0d1f10;
+  --bg-card:       #132016;
+  --green-dark:    #1a3320;
+  --green-mid:     #2d5c38;
+  --green-light:   #4a8a5a;
+  --green-pale:    #a8d4b0;
+  --gold:          #c9a84c;
+  --gold-light:    #e0c070;
+  --text-muted:    #8aab90;
+  --border:        rgba(255,255,255,0.08);
+  --border-green:  rgba(74,138,90,0.3);
+}
+*/
+
+/* ════════════════════════════════
+   NAVBAR
+════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 70px;
+  background: transparent;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(13, 31, 16, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 2px 30px rgba(0,0,0,0.35);
+}
+
+/* ── Brand ── */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-name-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nav-explore {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.nav-udagama {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+
+/* ── Links ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 3px;
+  transition: color 0.25s, background 0.25s;
+  white-space: nowrap;
+}
+
+.nav-links li a:hover {
+  color: var(--gold);
+  background: rgba(255,255,255,0.06);
+}
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 1100;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Backdrop ── */
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media (max-width: 960px) {
+  .nav-hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    width: min(300px, 80vw);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: rgba(10, 24, 12, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 90px 2rem 2rem;
+    z-index: 1000;
+    transition: right 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-links.open { right: 0; }
+
+  .nav-links li { width: 100%; }
+  .nav-links li a {
+    display: block;
+    padding: 0.9rem 0.5rem;
+    font-size: 0.82rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-radius: 0;
+    letter-spacing: 0.15em;
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+}
+
+@media (max-width: 480px) {
+  .navbar { padding: 0 1.2rem; height: 62px; }
+  .nav-logo { width: 36px; height: 36px; }
+  .nav-udagama { font-size: 1rem; }
+}
