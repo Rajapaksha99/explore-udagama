@@ -1,4 +1,4 @@
-import './FindUs.css'
+import './Findus.css'
 
 const DIRECTIONS = [
   
