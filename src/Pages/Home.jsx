@@ -20,7 +20,7 @@ const Home = () => {
     <Experience/>
     <Nearby/>
     <Gallery/>
-    <FindUs/>
+    <Findus/>
     <Contact/>
     <Footer/>
     
